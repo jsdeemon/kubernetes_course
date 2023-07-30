@@ -350,6 +350,30 @@ $ curl <IP>
 ### Load balancer 
 Podscould be distributed across different nodes 
 
+Common solution is to have a load balance IP address 
+it will be single IP address for specific cluster under specific deployment 
+
+### Create cluster IP for deployment
 
 
+```bash 
+$ kubectl get deployments 
+``` 
 
+there are 3 pods and inside of each pod there is Nginx container
+and in each container is a web server running on port 80
+
+- to expose internal port from the deployment port 
+
+```bash
+$ kubectl expose deployment nginx-deployment --port=8080 --target-port=80
+```
+
+GET SERVICES
+
+```bash
+$ kubectl get services 
+``` 
+
+Virtual IP address that was made by k8s in order to connect to any of pods 
+This IP allows you to connect to any deployment 
