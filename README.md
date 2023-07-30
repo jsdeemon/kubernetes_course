@@ -294,4 +294,62 @@ IP address of container
 ```bash
 $ hostname
 $ hostname -i
+$ curl 10.244.0.4
+
 ```
+
+```bash
+$ kubectl get pods -o wide
+``` 
+
+To delete a pod
+```bash
+$ kubectl delete pod podName
+$ kubectl delete pod nginx
+```
+### Create deployment 
+```bash
+$ kubectl create deployment nginx-deployment --image=nginx
+
+$ kubectl get deployments
+
+$ kubectl get pods
+
+$ kbectl describe deployment nginx-deployment
+```
+Pod is managed by deployment 
+
+Selector needs to connect pods with deployments 
+
+NewReplicaSet 
+
+Replica set manages all pods related to deployment 
+You can create lot of pods in the same deployment 
+and all of them are included in the replica set 
+
+```bash 
+$ kubectl describe pod nginx-deployment-66fb7f764c-4zzsq 
+``` 
+
+To scale deployment
+```bash 
+$ kubectl scale deployment nginx-deployment --replicas=5
+```
+now we scaled to 5 replicas and 5 different pods are running in our k8s cluster 
+```bash 
+$ kubectl scale deployment nginx-deployment --replicas=3
+``` 
+
+To connect to node:
+```bash
+$ minikube ssh
+$ curl <IP>
+``` 
+
+
+### Load balancer 
+Podscould be distributed across different nodes 
+
+
+
+
