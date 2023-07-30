@@ -373,7 +373,29 @@ GET SERVICES
 
 ```bash
 $ kubectl get services 
+$ kubectl get svc
 ``` 
 
 Virtual IP address that was made by k8s in order to connect to any of pods 
 This IP allows you to connect to any deployment 
+1h 15m 
+
+Cluster IP is only available inside the cluster 
+
+Cluster IP address is NOT AVAILABLE outside the k8s cluster 
+
+```bash
+$ minikube ssh
+
+# is provided by the one of the pods of a deployment
+curl 10.99.5.79:8080
+```
+
+Cluster IP is just a single IP for all pods in deployment 
+
+
+```bash
+$ kubectl describe service nginx-deployment
+```
+
+1h 20m
