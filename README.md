@@ -398,4 +398,16 @@ Cluster IP is just a single IP for all pods in deployment
 $ kubectl describe service nginx-deployment
 ```
 
-1h 20m
+1h 20m 
+Delete deployment and service
+```bash
+$ kubectl delete deployment nginx-deployment 
+$ kubectl delete service nginx-deployment
+``` 
+
+
+### WEB APP 
+PLAN: 
+- create NOdejs Express web app 
+https://github.com/bstashchuk/k8s 
+
