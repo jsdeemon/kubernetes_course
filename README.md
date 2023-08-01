@@ -411,3 +411,36 @@ PLAN:
 - create NOdejs Express web app 
 https://github.com/bstashchuk/k8s 
 
+Install Docker and Kubernetes extension for VSCode 
+
+Install Docker desktop 
+https://www.youtube.com/watch?v=Y4ut8kKpPUs 
+
+
+https://www.docker.com/products/docker-desktop/ 
+
+
+
+Build docker image vith Dockerfile with tagname to be able to upload it on docker hub
+
+```bash
+$ docker build . -t dmitrysafarov/k8s-web-hello 
+```
+
+```bash 
+$ docker images | grep k8s-web
+```
+
+Push customely build image to hub.docker.com
+
+```bash 
+$ docker login
+
+$ docker push dmitrysafarov/k8s-web-hello
+``` 
+
+Make k8s deployment based on dockerhub image
+
+```bash
+$ kubectl create deployment --image=dmitrysafarov/k8s-web-hello 
+```
