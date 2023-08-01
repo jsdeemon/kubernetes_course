@@ -1,4 +1,4 @@
-### Kubernetes course for begnners 
+### Kubernetes course for beginners 
 
 https://www.youtube.com/watch?v=d6WC5n9G_sM 
 
@@ -442,5 +442,19 @@ $ docker push dmitrysafarov/k8s-web-hello
 Make k8s deployment based on dockerhub image
 
 ```bash
-$ kubectl create deployment --image=dmitrysafarov/k8s-web-hello 
+$ kubectl create deployment k8s-web-hello --image=dmitrysafarov/k8s-web-hello 
 ```
+
+1h 42 mins 
+
+Create service using cluster IP anconnet to the webserver running Nodejs/Express
+
+```bash
+$ kubectl expose deployment k8s-web-hello --port=3000 
+
+$ kubectl get svc
+
+$ minikube ssh 
+$ curl <CLUSTER_IP>:3000
+
+``` 
