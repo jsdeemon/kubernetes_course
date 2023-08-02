@@ -651,6 +651,41 @@ $ minikube service k8s-web-nginx
 ifyou add /nginx to thr URL in web browser you will get to another service 
 
 ```bash
-$ kubecl get pods
+$ kubectl get pods
 $ kubectl exec k8s-web-nginx-7d4b4cc9b7-6p8qp -- nslookup nginx
+```
+
+to dekete
+```bash 
+$ kubectl delete -f nginx.yaml -f k8s-web-nginx.yaml 
+``` 
+
+
+### Change container runtime from Docker 
+
+```bash
+$ minikube status
+$ minikube stop
+$ minikube delete
+``` 
+
+Create new claster with minikube with CRI-O or containderd
+```bash
+$ minikube start --driver=virtualbox --container-runtime=cri-o  
+
+$ minikube start --driver=virtualbox --container-runtime=containerd
+``` 
+
+```bash
+$ minikube ip
+
+$ mnikube ssh
+
+$ sudo crictl ps
+```
+
+```bash
+$ kubectl apply -f k8s-web-nginx.yaml -f nginx.yaml
+
+$ minikube service k8s-web-nginx
 ```
