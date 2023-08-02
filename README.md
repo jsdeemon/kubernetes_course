@@ -499,4 +499,48 @@ we can open web browser and put it like http://192.168.59.100:30323/ and it shou
 we can also coonect via minkube service
 ```bash
 $ minikube service k8s-web-hello
+``` 
+to see only url:
+```bash
+$ minikube service k8s-web-hello --url
+```   
+delete service
+```bash
+$ kubectl delete svc k8s-web-hello 
+$ kubectl get svc
+```
+### Create Load balance service 
+
+```bash
+$ kubectl expose deployment k8s-web-hello --type=LoadBalancer --port=3000 
+
+$ kubectl get svc 
+
+$ minikube service k8s-web-hello
+
+$ kubectl get deploy
+$ kubectl describe deployment k8s-web-hello
+``` 
+
+
+### Rolling update - Update version of the image in deployment 
+new PODs will be created with new image while previous pods will be still running
+So, pods WILL BE REPLACED ONE BY ONE 
+And finally all pod will run new updated image
+
+
+build and push a modified image of app with new tagname
+```bash
+$ docker build . -t dmitrysafarov/k8s-web-hello:2.0.0
+
+$ docker push dmitrysafarov/k8s-web-hello:2.0.0
+``` 
+
+2h 
+
+Set image for deployment
+```bash
+$ kubectl set image deployment k8s-web-hello k8s-web-hello=dmitrysafarov/k8s-web-hello:2.0.0 
+
+$ kubectl rollout status deploy k8s-web-hello
 ```
