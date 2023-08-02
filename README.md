@@ -570,3 +570,55 @@ $ minikube dashboard
 ```
 
 2h 10m
+
+### Apply configuration files 
+
+To delete all resources and services in default namespace
+```bash
+$ kubectl delete all --all
+```
+
+we also delete kubernetes service but it automatically recreated 
+
+### DEPLOYMENT YAML CONFIG
+- create file deployment.yaml in root
+begin to type: Depl.. and select Kubernetes deployment 
+
+Documentation: https://kubernetes.io/docs/reference/
+
+APPLY DEPLOYMENT
+```bash 
+$ kubectl apply -f deployment.yaml  
+```
+
+
+```bash
+$ kubectl get pods
+$ kubectl get deploy
+```
+
+2 h 23m 
+
+### Create service config YAML file 
+create file service,yaml 
+
+type in Serv and rhen check Kubernetes service
+
+APPLY SERVICE
+```bash 
+$ kubectl apply -f service.yaml  
+```
+
+```bash
+$ minikube service k8s-web-hello
+```
+
+### To delete Service and Deloyment
+```bash
+$ kubectl delete -f deployment.yaml -f service.yaml
+``` 
+
+
+We will connect to API via loadBalancer IP address 
+From one deployment we will connect to other deployment and will get response from one of the pod which will be running nginx application 
+and we will get result to the clien with the response from Nginx pod
