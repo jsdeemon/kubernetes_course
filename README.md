@@ -544,3 +544,29 @@ $ kubectl set image deployment k8s-web-hello k8s-web-hello=dmitrysafarov/k8s-web
 
 $ kubectl rollout status deploy k8s-web-hello
 ```
+
+```bash
+$ minikube service k8s-web-hello 
+``` 
+to check status updated
+```bash
+$ kubectl rollout status deploy k8s-web-hello 
+``` 
+
+
+
+To delete one pod manually
+```bash 
+$ kubectl get pods
+$ kubectl delete pod k8s-web-hello-7958777c6c-6snjh
+```
+but new pod was automatically created 
+bexause we told k8s that we desired quantity of the pod to be 4
+
+### How to launch k8s dashboard 
+
+```bash 
+$ minikube dashboard
+```
+
+2h 10m
