@@ -621,4 +621,36 @@ $ kubectl delete -f deployment.yaml -f service.yaml
 
 We will connect to API via loadBalancer IP address 
 From one deployment we will connect to other deployment and will get response from one of the pod which will be running nginx application 
-and we will get result to the clien with the response from Nginx pod
+and we will get result to the clien with the response from Nginx pod 
+
+We create a service called Nginx for nginx deployment 
+
+build and push a docker file:
+```bash
+$ docker build . -t dmitrysafarov/k8s-web-nginx
+
+$ docker push dmitrysafarov/k8s-web-nginx
+``` 
+
+### How to combine deployment.yaml and service.yaml configuraion in one file
+
+create file k8s-b-nginx.yaml 
+
+create file nginx.yaml 
+
+## APPLY
+```bash
+$ kubectl apply -f k8s-web-nginx.yaml -f nginx.yaml
+```
+
+Service name is static, cluster ip is dynamic 
+
+```bash
+$ minikube service k8s-web-nginx
+``` 
+ifyou add /nginx to thr URL in web browser you will get to another service 
+
+```bash
+$ kubecl get pods
+$ kubectl exec k8s-web-nginx-7d4b4cc9b7-6p8qp -- nslookup nginx
+```
