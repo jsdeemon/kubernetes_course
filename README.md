@@ -457,4 +457,46 @@ $ kubectl get svc
 $ minikube ssh 
 $ curl <CLUSTER_IP>:3000
 
+```  
+
+```bash
+$ kubectl get pods
+$ kubectl get deploy
 ``` 
+
+Scale dployment
+```bash
+$ kubectl scale deployment k8s-web-hello --replicas=4 
+
+$ kubectl get pods
+$ kubectl get pods -o wide
+```
+4 pods are running and each pod has own unique IP address 
+
+then in minukube ssh we would get responses from various pods 
+NOW LOAD IS BALANCED ACROSS DIFFERENT PODS  
+this is how distributuon of a load works in action 
+
+```bash
+$ kubectl delete svc k8s-web-hello
+
+$ kubectl get svc
+```
+
+Create service again with type NotePort 
+```bash
+$ kubectl expose deployment k8s-web-hello --type=NodePort --port=3000
+```
+Randomly created port
+Now it is possible to connect to deployment using node IP address
+and when we see the IP address of minikube and also see the random port of our service
+```bash 
+$ kubectl get svc 
+$ minikube ip
+```
+we can open web browser and put it like http://192.168.59.100:30323/ and it should work
+
+we can also coonect via minkube service
+```bash
+$ minikube service k8s-web-hello
+```
